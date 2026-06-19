@@ -22,10 +22,10 @@ human. **Triage + propose only: it never edits code or opens PRs.**
 
 ## Install
 ```
-/plugin marketplace add <path-or-git-url-to-loop-kit>
+/plugin marketplace add yuzhiquan/loop-kit
 /plugin install loop-kit@loop-kit
 ```
-Local dev: `claude --plugin-dir /path/to/loop-kit`
+Local dev (run without installing): `claude --plugin-dir /path/to/loop-kit`
 
 ## Use (in the target repo)
 ```
@@ -38,6 +38,18 @@ Make it a real (self-waking) loop:
 /loop 1h <repo>/.loop/loop-run.sh           # local, machine on
 # or a GitHub Actions schedule: cron         # while you sleep / machine off
 ```
+
+### Example: a 60-second setup
+```
+cd ~/my-rust-service
+/plugin marketplace add yuzhiquan/loop-kit
+/plugin install loop-kit@loop-kit
+/loop-kit:loop-init      # confirms repo slug + lint/test/build + token caps
+/loop-kit:loop-run       # first round → proposals land in .loop/state.md
+/loop-kit:loop-status    # see what's Actionable
+```
+The same plugin works unchanged on Rust, Go, Python, … — only `loop.config.yaml`
+differs per repo. (Validated on both a Rust and a Go repo with zero plugin edits.)
 
 ## The universal / per-repo split
 - **Plugin (universal):** orchestration, skeptic discipline, guardrails, runner, commands.
