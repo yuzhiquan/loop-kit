@@ -1,0 +1,11 @@
+{
+  "name": "loop-kit",
+  "owner": { "name": "loop-kit" },
+  "plugins": [
+    {
+      "name": "loop-kit",
+      "source": "./",
+      "description": "Importable Loop Engineering triage loop for any repo."
+    }
+  ]
+}

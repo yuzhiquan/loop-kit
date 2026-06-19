@@ -1,0 +1,6 @@
+# Plugin repo hygiene
+.DS_Store
+*.log
+
+# Per-repo loop state, if loop-kit is ever run against itself
+.loop/.run-count

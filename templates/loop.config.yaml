@@ -1,0 +1,36 @@
+# loop-kit config — the per-repo facts YOU supply.
+# The plugin supplies the loop machinery (five moves + skeptic evaluator +
+# §09 guardrails). This file supplies what's specific to THIS repo.
+# Generated/edited by /loop-kit:loop-init. Lives at <repo>/loop.config.yaml.
+
+# GitHub repo slug, for discovery via the gh CLI.
+repo: OWNER/NAME
+
+# What the loop reads each round to decide "what's worth doing".
+#   github-issues  — open issues (needs gh auth)   [implemented]
+#   ci             — recent CI run failures          [stub in v0.1]
+#   commits        — recent commits for regressions  [stub in v0.1]
+discovery: github-issues
+
+# The repo's REAL commands. The skeptic uses these to phrase "what test proves
+# this fix" and to know how a human would verify. Pulled from your Makefile /
+# package scripts — do NOT guess; put the actual commands.
+commands:
+  lint:  "make lint"
+  test:  "make test"
+  build: "make build"
+
+# What "actionable in THIS repo" means — guides discovery's handoff filter.
+# Be concrete: languages, what a small fix looks like, what to skip.
+actionability: >
+  Clear bugs, small features, or doc/test gaps that map to code in this repo.
+  Skip vague discussions, upstream-dependency issues, and anything needing a
+  maintainer product decision.
+
+# §09 token guardrails. A runaway loop can't burn the night past these.
+caps:
+  max_turns: 30          # hard cap on agent turns per round
+  max_runs_per_day: 24   # refuse to start once today hit this
+
+# How many candidate issues to draft+judge per round.
+candidates_per_round: 3

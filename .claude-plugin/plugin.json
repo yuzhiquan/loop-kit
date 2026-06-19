@@ -1,0 +1,7 @@
+{
+  "name": "loop-kit",
+  "description": "Importable Loop Engineering kit: add an autonomous triage loop (discover -> propose -> independent skeptic -> persist) to any repo. You supply a loop.config.yaml; the plugin supplies the loop machinery and the safety guardrails.",
+  "version": "0.1.0",
+  "author": { "name": "loop-kit" },
+  "keywords": ["loop-engineering", "triage", "automation", "agent-loop"]
+}
