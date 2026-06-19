@@ -21,10 +21,23 @@ human. **Triage + propose only: it never edits code or opens PRs.**
 | Scheduling | `/loop` or a cron over `.loop/loop-run.sh` |
 
 ## Install
+Run these **one at a time** (don't paste both on a single line — the first
+command would swallow the second as its argument):
+
 ```
 /plugin marketplace add yuzhiquan/loop-kit
+```
+then, after it succeeds:
+```
 /plugin install loop-kit@loop-kit
 ```
+
+The repo is public, so the default HTTPS clone works. If you fork it private,
+add the marketplace by SSH instead (matching your git host alias), e.g.:
+```
+/plugin marketplace add git@github.com:yuzhiquan/loop-kit.git
+```
+
 Local dev (run without installing): `claude --plugin-dir /path/to/loop-kit`
 
 ## Use (in the target repo)
@@ -40,6 +53,7 @@ Make it a real (self-waking) loop:
 ```
 
 ### Example: a 60-second setup
+Enter each line as a separate command (not pasted as one block):
 ```
 cd ~/my-rust-service
 /plugin marketplace add yuzhiquan/loop-kit
